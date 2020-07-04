@@ -5,6 +5,6 @@ If you wish to contribute, please follow these steps:
 3. Write your code.
 4. Write new tests.
 5. Run `foodcritic -f any . && rubocop . && kitchen test`.
-6. If everythig is Ok, commit and create a pull request.
+6. If everything is Ok, commit and create a pull request.
 
 Thank you!

@@ -6,3 +6,7 @@ Berksfile.lock
 .*.sw?
 
 .travis/*.pem
+
+vendor/
+.ruby-version
+.bundle/

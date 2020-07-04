@@ -1,6 +1,17 @@
-default['prometheus_exporters']['node']['version'] = '1.0.0'
-default['prometheus_exporters']['node']['url'] = "https://github.com/prometheus/node_exporter/releases/download/v#{node['prometheus_exporters']['node']['version']}/node_exporter-#{node['prometheus_exporters']['node']['version']}.linux-amd64.tar.gz"
-default['prometheus_exporters']['node']['checksum'] = 'fae88be0aa33c8ae22340723f9b4a4e519e67d2969da7a27751e755db7e75788'
+default['prometheus_exporters']['node']['version'] = '1.0.1'
+default['prometheus_exporters']['node']['arch'] = case node['kernel']['machine']
+                                                  when 'armv7l'
+                                                    'armv7'
+                                                  when 'x86_64'
+                                                    'amd64'
+                                                  end
+default['prometheus_exporters']['node']['url'] = "https://github.com/prometheus/node_exporter/releases/download/v#{node['prometheus_exporters']['node']['version']}/node_exporter-#{node['prometheus_exporters']['node']['version']}.#{node['os']}-#{node['prometheus_exporters']['node']['arch']}.tar.gz"
+default['prometheus_exporters']['node']['checksum'] = case node['kernel']['machine']
+                                                      when 'armv7l'
+                                                        'e7f4427a25f1870103588e4968c7dc8c1426c00a0c029d0183a9a7afdd61357b'
+                                                      when 'x86_64'
+                                                        '3369b76cd2b0ba678b6d618deab320e565c3d93ccb5c2a0d5db51a53857768ae'
+                                                      end
 
 default['prometheus_exporters']['node']['textfile_directory'] = '/var/lib/node_exporter/textfile_collector'
 

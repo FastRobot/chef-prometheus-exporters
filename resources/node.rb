@@ -175,7 +175,7 @@ action :install do
   end
 
   link '/usr/local/sbin/node_exporter' do
-    to "/opt/node_exporter-#{node['prometheus_exporters']['node']['version']}.linux-amd64/node_exporter"
+    to "/opt/node_exporter-#{node['prometheus_exporters']['node']['version']}.#{node['os']}-#{node['prometheus_exporters']['node']['arch']}/node_exporter"
   end
 
   # Configure to run as a service
