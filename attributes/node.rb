@@ -1,11 +1,11 @@
 default['prometheus_exporters']['node']['version'] = '1.0.1'
-default['prometheus_exporters']['node']['arch'] = case node['kernel']['machine']
-                                                  when 'armv7l'
-                                                    'armv7'
-                                                  when 'x86_64'
-                                                    'amd64'
-                                                  end
-default['prometheus_exporters']['node']['url'] = "https://github.com/prometheus/node_exporter/releases/download/v#{node['prometheus_exporters']['node']['version']}/node_exporter-#{node['prometheus_exporters']['node']['version']}.#{node['os']}-#{node['prometheus_exporters']['node']['arch']}.tar.gz"
+default['prometheus_exporters']['node']['os_arch'] = case node['kernel']['machine']
+                                                     when 'armv7l'
+                                                       "#{node['os']}-armv7"
+                                                     when 'x86_64'
+                                                       "#{node['os']}-amd64"
+                                                     end
+default['prometheus_exporters']['node']['url'] = "https://github.com/prometheus/node_exporter/releases/download/v#{node['prometheus_exporters']['node']['version']}/node_exporter-#{node['prometheus_exporters']['node']['version']}.#{node['prometheus_exporters']['node']['os_arch']}.tar.gz"
 default['prometheus_exporters']['node']['checksum'] = case node['kernel']['machine']
                                                       when 'armv7l'
                                                         'e7f4427a25f1870103588e4968c7dc8c1426c00a0c029d0183a9a7afdd61357b'
